@@ -1,68 +1,14 @@
-<doctype html>
-  <html>
-    <body style="background-color:black:">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <style>
-        * {margin: 1; padding: 1;}
-        body {background:  #000000;}
-canvas {display: alla;}
-    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title></title>
 </head>
-    <body>
-    <canvas id="c"></canvas>
-    </body>
-    <script>
+<body style="background-color: black">
+  
 
-var c = document.getElementById("c");
-var ctx = c.getContext("2d");
-
-//making the canvas full screen
-c.height = window.innerHeight;
-c.width = window.innerWidth;
-
-//english characters
-var english = "私たちはあなたのIPアドレスを持っています私たちはあなたのIPアドレスを持っています我们有你的IP地址abcdefghijklmnopqrstuvwxyz123567891011121314151617181920vjsiuchuiscucre7834he87rgdc7hrefh79revuvn3urce78gdsucbuf8easfjhf3qjyegaskeugfjq3g47fsfj3qewu7sfgu3weufcqw7ucgjhceuwftcu3ydhwegue87hureg873yr87837r3498f348948348u89u84fu84fu48fu4389fuw8f34fwoo8ursorusrs8orsou84fuwc34ich3if34fg7y8ey7856876678678797676767687687678y7t645597078767565464576987811023048658579838cgchnchc8h85745h547g5757f48fg87h93ifhuh43ifh47rfh47hfi75i7fh4i7hf7ic4fcwyefhcu45hgyh5iegi5i7fi7hi7gh5e5f75efiyfi755idi7";
-//converting the string into an array of single characters
-english = english.split("");
-
-var font_size = 19;
-var columns = c.width/font_size; //number of columns for the rain
-//an array of drops - one per column
-var drops = [1];
-//x below is the x coordinate
-//1 = y co-ordinate of the drop(same for every drop initially)
-for(var x = 0; x < columns; x++)
-	drops[x] = 19; 
-
-//drawing the characters
-function draw()
-{
-	//Black BG for the canvas
-	//translucent BG to show trail
-	ctx.fillStyle = "rgba(0, 0, 0, 0.09)";
-	ctx.fillRect(0, 0, c.width, c.height);
-	
-	ctx.fillStyle = "#0eff00"; //green text
-	ctx.font = font_size + "px arial";
-	//looping over drops
-	for(var i = 0; i < drops.length; i++)
-	{
-		//a random chinese character to print
-		var text = english[Math.floor(Math.random()*english.length)];
-		//x = i*font_size, y = value of drops[i]*font_size
-		ctx.fillText(text, i*font_size, drops[i]*font_size);
-		
-		//sending the topback to the drop randomly after it has crossed the screen
-		//adding a randomness to the reset to make the drops scattered on the Y axis
-		if(drops[i]*font_size > c.height && Math.random() > 0.975)
-			drops[i] = 0;
-		
-		//incrementing Y coordinate
-		drops[i]++;
-	}
-}
-
-setInterval(draw, 99);
-    </script>
-    </header>
-  </html>
+    <canvas id="Matrix" style="width: 100%; height: 100%;"></canvas>
+    <script src="./index.js"></script>
